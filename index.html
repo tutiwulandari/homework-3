@@ -21,17 +21,17 @@
                 <h3>Temperature Convention</h3>
                 <div class="row">
                     <div class="col-4">
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="Celcius">Celcius</option>
-                            <option value="Fahrenheit">Fahrenheit</option>
-                            <option value="Reamur">Reamur</option>
+                        <select class="form-select" aria-label="Default select example" id="from"  onchange=select()>
+                            <option value="Celcius" id="optionCelcius">Celcius</option>
+                            <option value="Fahrenheit" id="optionFahrenheit">Fahrenheit</option>
+                            <option value="Reamur" id = "option">Reamur</option>
                         </select>
                     </div>
                     <div class="col-4">
                         <p>to</p>
                     </div>
                     <div class="col-4">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" id = "to" onchange=select()>
                             <option value="Celcius">Celcius</option>
                             <option value="Fahrenheit">Fahrenheit</option>
                             <option value="Reamur">Reamur</option>
@@ -45,6 +45,8 @@
                             class="form-control"
                             id="inputNumber"
                             placeholder="some number"
+                            onkeyup=myFunction()
+                        
                         >
                     </div>
                     <h4>=</h4>
@@ -53,6 +55,7 @@
                         class="form-control"
                         id="result"
                         placeholder="result"
+                        readonly
                     >
                 </form>
             </form>
@@ -73,6 +76,86 @@
     var d = n.getDate();
     document.getElementById("date").innerHTML = y + " " + months[n.getMonth()] + " " + d + " " + days[n.getDay()];
     document.getElementById("time").innerHTML = ampm + " " + hours + ":" + minutes + ":" + second
+
+    function select() {
+      document.getElementById("inputNumber").value = "";
+      document.getElementById("result").value = "";
+    }
+
+    function myFunction() {
+   
+        if(document.getElementById("from").value === "Celcius" && document.getElementById("to").value === "Fahrenheit") {
+            convertCF();
+        } else if(document.getElementById("from").value === "Fahrenheit" && document.getElementById("to").value === "Celcius") {
+            convertFC();
+        } else if(document.getElementById("from").value === "Celcius"  && document.getElementById("to").value === "Reamur") {
+            convertCR();
+        } else if(document.getElementById("from").value === "Reamur" && document.getElementById("to").value === "Celcius" ) {
+            convertRC();
+        } else if(document.getElementById("from").value === "Reamur" && document.getElementById("to").value === "Fahrenheit") {
+            convertRF();
+        } else if(document.getElementById("from").value === "Fahrenheit" && document.getElementById("to").value === "Reamur") {
+            convertFR();
+        } else if(document.getElementById("from").value === "Celcius" && document.getElementById("to").value === "Celcius") {
+            convertCC();
+        }  else if(document.getElementById("from").value === "Fahrenheit" && document.getElementById("to").value === "Fahrenheit") {
+            convertFF();
+        } else if(document.getElementById("from").value === "Reamur" && document.getElementById("to").value === "Reamur") {
+            convertRR();
+        } 
+    }
+
+
+    function convertFC() {
+        let x
+        x =  (document.getElementById("inputNumber").value-32) * 5 / 9
+        document.getElementById("result").value = Math.round(x)
+     
+    }
+
+    function convertCF() {
+        let x ;
+        x = document.getElementById("inputNumber").value * 9 / 5 + 32;
+        document.getElementById("result").value = Math.round(x)
+    }
+
+    function convertCR() {
+        let x ;
+        x = document.getElementById("inputNumber").value * 4 / 5
+        document.getElementById("result").value = Math.round(x)
+        console.log("iniX" , x)
+    }
+
+    function convertRC() {
+        let x ;
+        x = document.getElementById("inputNumber").value * 5 / 4
+        document.getElementById("result").value = Math.round(x)
+    }
+
+    function convertRF() {
+        let x ;
+        x =( document.getElementById("inputNumber").value * 9/4 ) +32
+        document.getElementById("result").value = Math.round(x)
+    }
+
+    function convertFR() {
+        let x ; 
+        x =( document.getElementById("inputNumber").value - 32 ) * 4/9
+        document.getElementById("result").value = Math.round(x)
+    }
+    function convertRR() {
+        document.getElementById("result").value = document.getElementById("inputNumber").value
+    }
+    function convertCC() {
+        document.getElementById("result").value = document.getElementById("inputNumber").value
+    }
+    function convertFF() {
+        document.getElementById("result").value = document.getElementById("inputNumber").value
+    }
+    
+    
+    
+    
     </script>
 </script>
 </html>
