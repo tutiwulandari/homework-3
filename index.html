@@ -21,17 +21,17 @@
                 <h3>Temperature Convention</h3>
                 <div class="row">
                     <div class="col-4">
-                        <select class="form-select" aria-label="Default select example" id="from"  onchange=select()>
-                            <option value="Celcius" id="optionCelcius">Celcius</option>
-                            <option value="Fahrenheit" id="optionFahrenheit">Fahrenheit</option>
-                            <option value="Reamur" id = "option">Reamur</option>
+                        <select class="form-select" aria-label="Default select example" id="from"  onchange="select()">
+                            <option value="Celcius">Celcius</option>
+                            <option value="Fahrenheit">Fahrenheit</option>
+                            <option value="Reamur">Reamur</option>
                         </select>
                     </div>
                     <div class="col-4">
                         <p>to</p>
                     </div>
                     <div class="col-4">
-                        <select class="form-select" aria-label="Default select example" id = "to" onchange=select()>
+                        <select class="form-select" aria-label="Default select example" id = "to" onchange="select()">
                             <option value="Celcius">Celcius</option>
                             <option value="Fahrenheit">Fahrenheit</option>
                             <option value="Reamur">Reamur</option>
@@ -45,7 +45,7 @@
                             class="form-control"
                             id="inputNumber"
                             placeholder="some number"
-                            onkeyup=myFunction()
+                            onkeyup="myFunction()"
                         
                         >
                     </div>
@@ -59,6 +59,19 @@
                     >
                 </form>
             </form>
+           
+        </div>
+        <div class="change-background">
+            <h3>Change Background Color</h3>
+            <form>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="input-color"
+                    
+                    >
+                    <button type="button" class="btn btn-dark" onclick="changeColor()" id="btn-change">Change</button>
+            </form>
         </div>
     </body>
     <script>
@@ -70,7 +83,7 @@
     var minutes = n.getMinutes();
     var ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
-    hours = hours ? hours : 12; // the hour '0' should be '12'
+    hours = hours ? hours : 12; 
     minutes = minutes < 10 ? '0'+minutes : minutes;
     var second = n.getSeconds();
     var d = n.getDate();
@@ -152,10 +165,13 @@
     function convertFF() {
         document.getElementById("result").value = document.getElementById("inputNumber").value
     }
-    
-    
-    
-    
+
+   
+     function changeColor() {
+    document.body.style.backgroundColor = document.getElementById("input-color").value;
+
+    }
+
     </script>
 </script>
 </html>

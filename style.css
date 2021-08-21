@@ -23,6 +23,7 @@ form {
 select {
     font-size: 26px!important;
     word-wrap: normal;
+    width: fit-content!important;
 }
 .row {
     margin-left: 230px;
@@ -37,4 +38,13 @@ select {
 
 form .mb-3 {
     margin-top: 50px;
+}
+
+.change-background {
+   margin-left: 400px!important;
+   padding: 100px;
+   width: 65%;
+}
+.change-background button {
+    margin-top: 20px;
 }
